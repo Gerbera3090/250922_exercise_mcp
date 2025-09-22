@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시간 여행자의 일기</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        line-height: 1.8;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        margin-top: 20px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #4a5568;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .chapter {
+        margin-bottom: 40px;
+        padding: 25px;
+        background: linear-gradient(145deg, #f7fafc, #edf2f7);
+        border-radius: 10px;
+        border-left: 5px solid #667eea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .chapter:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .chapter h2 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+
+      .chapter p {
+        margin-bottom: 15px;
+        text-align: justify;
+        font-size: 1.1em;
+      }
+
+      .highlight {
+        background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      .mystery {
+        background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #ff6b6b;
+        font-style: italic;
+      }
+
+      .interactive-btn {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .interactive-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .reveal {
+        animation: fadeIn 1s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🕰️ 시간 여행자의 일기</h1>
+
+      <div class="chapter">
+        <h2>제1장: 발견</h2>
+        <p>
+          2024년 3월 15일, 나는 우연히
+          <span class="highlight">시간 여행 장치</span>를 발견했다. 그것은
+          할아버지의 오래된 시계 상자 안에 숨겨져 있었다. 상자 안에는 작은 금속
+          구체와 함께 한 장의 쪽지가 있었다.
+        </p>
+
+        <div class="mystery">
+          "시간은 흐르는 강물이 아니라, 우리가 헤엄칠 수 있는 바다다. - 1897년,
+          알렉산더"
+        </div>
+
+        <p>
+          처음에는 장난감이라고 생각했다. 하지만 그 구체를 만지는 순간, 내
+          주변의 모든 것이 흐릿해지기 시작했다...
+        </p>
+
+        <button class="interactive-btn" onclick="revealSecret()">
+          비밀을 밝혀보기
+        </button>
+        <div id="secret" class="hidden">
+          <p>
+            <strong>비밀:</strong> 그 구체는 실제로 19세기 말의 천재 발명가
+            알렉산더가 만든 시간 여행 장치였다. 그는 자신의 발명품이 미래에
+            악용될 것을 두려워해 숨겨두었던 것이다.
+          </p>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <h2>제2장: 첫 번째 여행</h2>
+        <p>
+          첫 번째 여행은 1920년대 파리로의 여행이었다. 거리에는
+          <span class="highlight">아르데코 양식</span>의 건물들이 줄지어 서
+          있었고, 카페에서는 피카소와 헤밍웨이가 토론을 나누고 있었다.
+        </p>
+
+        <p>
+          나는 그곳에서 마리라는 이름의 화가를 만났다. 그녀는 나에게 "당신은
+          어디서 왔나요? 당신의 눈에는 미래의 슬픔이 담겨 있어요"라고 말했다.
+        </p>
+
+        <button class="interactive-btn" onclick="showPainting()">
+          마리의 그림 보기
+        </button>
+        <div id="painting" class="hidden reveal">
+          <div style="text-align: center; margin: 20px 0">
+            <div
+              style="
+                width: 200px;
+                height: 150px;
+                background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+                margin: 0 auto;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-weight: bold;
+              "
+            >
+              시간의 흐름
+            </div>
+            <p style="margin-top: 10px; font-style: italic">
+              "시간은 색깔로 표현할 수 있어요. 과거는 따뜻한 갈색, 현재는 생생한
+              파란색, 미래는... 아직 그려지지 않은 흰색이에요."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <h2>제3장: 시간의 역설</h2>
+        <p>
+          여행을 거듭할수록 나는 <span class="highlight">시간의 역설</span>을
+          깨달았다. 내가 과거를 바꾸려고 할 때마다, 미래는 예상과 다르게 변했다.
+          1969년 달 착륙을 막으려고 했을 때, 오히려 더 빠른 우주 개발이
+          일어났다.
+        </p>
+
+        <div class="mystery">
+          시간은 우리가 생각하는 것보다 훨씬 복잡하다. 모든 변화는 이미 예정된
+          것일 수도 있고, 우리의 선택이 새로운 시간선을 만들 수도 있다.
+        </div>
+
+        <button class="interactive-btn" onclick="showTimeline()">
+          시간선 보기
+        </button>
+        <div id="timeline" class="hidden reveal">
+          <div
+            style="
+              background: #f8f9fa;
+              padding: 20px;
+              border-radius: 8px;
+              margin: 15px 0;
+            "
+          >
+            <h4>시간선 분석:</h4>
+            <ul style="margin-left: 20px">
+              <li>원래 시간선: 2024년 → 평범한 일상</li>
+              <li>수정된 시간선: 2024년 → 시간 여행자로서의 삶</li>
+              <li>가능한 미래: 2050년 → 시간 여행이 일상이 된 세계</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <h2>제4장: 선택</h2>
+        <p>
+          오늘, 나는 중요한 선택을 해야 한다. 시간 여행 장치를 파괴하고 평범한
+          삶으로 돌아갈 것인가, 아니면 계속해서 시간을 여행하며 역사의 수호자가
+          될 것인가?
+        </p>
+
+        <p>
+          마리가 그려준 그림을 다시 보니, 미래는 정말로
+          <span class="highlight">아직 그려지지 않은 흰색</span>이었다. 내가
+          어떤 선택을 하든, 그것이 미래를 그리는 붓이 될 것이다.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0">
+          <button class="interactive-btn" onclick="makeChoice('destroy')">
+            장치를 파괴한다
+          </button>
+          <button class="interactive-btn" onclick="makeChoice('keep')">
+            여행을 계속한다
+          </button>
+        </div>
+
+        <div id="ending" class="hidden"></div>
+      </div>
+
+      <div class="footer">
+        <p>💫 "시간은 우리가 만드는 것이 아니라, 우리가 발견하는 것이다."</p>
+        <p style="margin-top: 10px; font-size: 0.9em">
+          - 시간 여행자의 마지막 일기에서
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function revealSecret() {
+        const secret = document.getElementById("secret");
+        secret.classList.remove("hidden");
+        secret.classList.add("reveal");
+      }
+
+      function showPainting() {
+        const painting = document.getElementById("painting");
+        painting.classList.remove("hidden");
+        painting.classList.add("reveal");
+      }
+
+      function showTimeline() {
+        const timeline = document.getElementById("timeline");
+        timeline.classList.remove("hidden");
+        timeline.classList.add("reveal");
+      }
+
+      function makeChoice(choice) {
+        const ending = document.getElementById("ending");
+        ending.classList.remove("hidden");
+        ending.classList.add("reveal");
+
+        if (choice === "destroy") {
+          ending.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 10px; text-align: center;">
+                        <h3>🌅 새로운 시작</h3>
+                        <p>당신은 시간 여행 장치를 파괴했습니다. 이제 평범한 일상으로 돌아갑니다. 하지만 그 경험들은 당신을 더 현명하고 감사하는 사람으로 만들어주었습니다.</p>
+                        <p style="margin-top: 15px; font-style: italic;">"때로는 가장 큰 모험이 평범한 삶을 사는 것일 수도 있습니다."</p>
+                    </div>
+                `;
+        } else {
+          ending.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; padding: 25px; border-radius: 10px; text-align: center;">
+                        <h3>🚀 영원한 여행자</h3>
+                        <p>당신은 시간 여행을 계속하기로 선택했습니다. 이제 당신은 시간의 수호자가 되어 역사를 보호하고 미래를 안내하는 역할을 맡게 됩니다.</p>
+                        <p style="margin-top: 15px; font-style: italic;">"시간은 끝없는 모험이고, 당신은 그 모험의 주인공입니다."</p>
+                    </div>
+                `;
+        }
+      }
+
+      // 페이지 로드 시 애니메이션 효과
+      window.addEventListener("load", function () {
+        const chapters = document.querySelectorAll(".chapter");
+        chapters.forEach((chapter, index) => {
+          setTimeout(() => {
+            chapter.style.opacity = "0";
+            chapter.style.transform = "translateY(30px)";
+            chapter.style.transition = "all 0.6s ease";
+
+            setTimeout(() => {
+              chapter.style.opacity = "1";
+              chapter.style.transform = "translateY(0)";
+            }, 100);
+          }, index * 200);
+        });
+      });
+    </script>
+  </body>
+</html>
