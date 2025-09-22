@@ -1,337 +1,419 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>시간 여행자의 일기</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Georgia", serif;
-        line-height: 1.8;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        color: #333;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.95);
-        margin-top: 20px;
-        border-radius: 15px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        text-align: center;
-        color: #4a5568;
-        margin-bottom: 30px;
-        font-size: 2.5em;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .chapter {
-        margin-bottom: 40px;
-        padding: 25px;
-        background: linear-gradient(145deg, #f7fafc, #edf2f7);
-        border-radius: 10px;
-        border-left: 5px solid #667eea;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .chapter:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .chapter h2 {
-        color: #2d3748;
-        margin-bottom: 15px;
-        font-size: 1.8em;
-      }
-
-      .chapter p {
-        margin-bottom: 15px;
-        text-align: justify;
-        font-size: 1.1em;
-      }
-
-      .highlight {
-        background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-weight: bold;
-      }
-
-      .mystery {
-        background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
-        padding: 15px;
-        border-radius: 8px;
-        margin: 20px 0;
-        border-left: 4px solid #ff6b6b;
-        font-style: italic;
-      }
-
-      .interactive-btn {
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 16px;
-        margin: 10px 5px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .interactive-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      .reveal {
-        animation: fadeIn 1s ease-in;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .footer {
-        text-align: center;
-        margin-top: 40px;
-        padding: 20px;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: white;
-        border-radius: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>🕰️ 시간 여행자의 일기</h1>
-
-      <div class="chapter">
-        <h2>제1장: 발견</h2>
-        <p>
-          2024년 3월 15일, 나는 우연히
-          <span class="highlight">시간 여행 장치</span>를 발견했다. 그것은
-          할아버지의 오래된 시계 상자 안에 숨겨져 있었다. 상자 안에는 작은 금속
-          구체와 함께 한 장의 쪽지가 있었다.
-        </p>
-
-        <div class="mystery">
-          "시간은 흐르는 강물이 아니라, 우리가 헤엄칠 수 있는 바다다. - 1897년,
-          알렉산더"
-        </div>
-
-        <p>
-          처음에는 장난감이라고 생각했다. 하지만 그 구체를 만지는 순간, 내
-          주변의 모든 것이 흐릿해지기 시작했다...
-        </p>
-
-        <button class="interactive-btn" onclick="revealSecret()">
-          비밀을 밝혀보기
-        </button>
-        <div id="secret" class="hidden">
-          <p>
-            <strong>비밀:</strong> 그 구체는 실제로 19세기 말의 천재 발명가
-            알렉산더가 만든 시간 여행 장치였다. 그는 자신의 발명품이 미래에
-            악용될 것을 두려워해 숨겨두었던 것이다.
-          </p>
-        </div>
-      </div>
-
-      <div class="chapter">
-        <h2>제2장: 첫 번째 여행</h2>
-        <p>
-          첫 번째 여행은 1920년대 파리로의 여행이었다. 거리에는
-          <span class="highlight">아르데코 양식</span>의 건물들이 줄지어 서
-          있었고, 카페에서는 피카소와 헤밍웨이가 토론을 나누고 있었다.
-        </p>
-
-        <p>
-          나는 그곳에서 마리라는 이름의 화가를 만났다. 그녀는 나에게 "당신은
-          어디서 왔나요? 당신의 눈에는 미래의 슬픔이 담겨 있어요"라고 말했다.
-        </p>
-
-        <button class="interactive-btn" onclick="showPainting()">
-          마리의 그림 보기
-        </button>
-        <div id="painting" class="hidden reveal">
-          <div style="text-align: center; margin: 20px 0">
-            <div
-              style="
-                width: 200px;
-                height: 150px;
-                background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
-                margin: 0 auto;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #333;
-                font-weight: bold;
-              "
-            >
-              시간의 흐름
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김개발 - 소프트웨어 엔지니어</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 헤더 및 네비게이션 -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>김개발</h1>
             </div>
-            <p style="margin-top: 10px; font-style: italic">
-              "시간은 색깔로 표현할 수 있어요. 과거는 따뜻한 갈색, 현재는 생생한
-              파란색, 미래는... 아직 그려지지 않은 흰색이에요."
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="chapter">
-        <h2>제3장: 시간의 역설</h2>
-        <p>
-          여행을 거듭할수록 나는 <span class="highlight">시간의 역설</span>을
-          깨달았다. 내가 과거를 바꾸려고 할 때마다, 미래는 예상과 다르게 변했다.
-          1969년 달 착륙을 막으려고 했을 때, 오히려 더 빠른 우주 개발이
-          일어났다.
-        </p>
-
-        <div class="mystery">
-          시간은 우리가 생각하는 것보다 훨씬 복잡하다. 모든 변화는 이미 예정된
-          것일 수도 있고, 우리의 선택이 새로운 시간선을 만들 수도 있다.
-        </div>
-
-        <button class="interactive-btn" onclick="showTimeline()">
-          시간선 보기
-        </button>
-        <div id="timeline" class="hidden reveal">
-          <div
-            style="
-              background: #f8f9fa;
-              padding: 20px;
-              border-radius: 8px;
-              margin: 15px 0;
-            "
-          >
-            <h4>시간선 분석:</h4>
-            <ul style="margin-left: 20px">
-              <li>원래 시간선: 2024년 → 평범한 일상</li>
-              <li>수정된 시간선: 2024년 → 시간 여행자로서의 삶</li>
-              <li>가능한 미래: 2050년 → 시간 여행이 일상이 된 세계</li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">홈</a></li>
+                <li><a href="#about" class="nav-link">소개</a></li>
+                <li><a href="#skills" class="nav-link">기술</a></li>
+                <li><a href="#experience" class="nav-link">경력</a></li>
+                <li><a href="#projects" class="nav-link">프로젝트</a></li>
+                <li><a href="#contact" class="nav-link">연락처</a></li>
             </ul>
-          </div>
-        </div>
-      </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-      <div class="chapter">
-        <h2>제4장: 선택</h2>
-        <p>
-          오늘, 나는 중요한 선택을 해야 한다. 시간 여행 장치를 파괴하고 평범한
-          삶으로 돌아갈 것인가, 아니면 계속해서 시간을 여행하며 역사의 수호자가
-          될 것인가?
-        </p>
-
-        <p>
-          마리가 그려준 그림을 다시 보니, 미래는 정말로
-          <span class="highlight">아직 그려지지 않은 흰색</span>이었다. 내가
-          어떤 선택을 하든, 그것이 미래를 그리는 붓이 될 것이다.
-        </p>
-
-        <div style="text-align: center; margin: 30px 0">
-          <button class="interactive-btn" onclick="makeChoice('destroy')">
-            장치를 파괴한다
-          </button>
-          <button class="interactive-btn" onclick="makeChoice('keep')">
-            여행을 계속한다
-          </button>
-        </div>
-
-        <div id="ending" class="hidden"></div>
-      </div>
-
-      <div class="footer">
-        <p>💫 "시간은 우리가 만드는 것이 아니라, 우리가 발견하는 것이다."</p>
-        <p style="margin-top: 10px; font-size: 0.9em">
-          - 시간 여행자의 마지막 일기에서
-        </p>
-      </div>
-    </div>
-
-    <script>
-      function revealSecret() {
-        const secret = document.getElementById("secret");
-        secret.classList.remove("hidden");
-        secret.classList.add("reveal");
-      }
-
-      function showPainting() {
-        const painting = document.getElementById("painting");
-        painting.classList.remove("hidden");
-        painting.classList.add("reveal");
-      }
-
-      function showTimeline() {
-        const timeline = document.getElementById("timeline");
-        timeline.classList.remove("hidden");
-        timeline.classList.add("reveal");
-      }
-
-      function makeChoice(choice) {
-        const ending = document.getElementById("ending");
-        ending.classList.remove("hidden");
-        ending.classList.add("reveal");
-
-        if (choice === "destroy") {
-          ending.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 10px; text-align: center;">
-                        <h3>🌅 새로운 시작</h3>
-                        <p>당신은 시간 여행 장치를 파괴했습니다. 이제 평범한 일상으로 돌아갑니다. 하지만 그 경험들은 당신을 더 현명하고 감사하는 사람으로 만들어주었습니다.</p>
-                        <p style="margin-top: 15px; font-style: italic;">"때로는 가장 큰 모험이 평범한 삶을 사는 것일 수도 있습니다."</p>
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <!-- 홈 섹션 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">안녕하세요, 저는</h2>
+                    <h1 class="hero-name">김개발</h1>
+                    <div class="hero-subtitle">
+                        <span class="typing-text" data-texts='["Full-Stack Software Engineer", "풀스택 소프트웨어 엔지니어", "Web & Mobile Developer", "웹 & 모바일 개발자", "Problem Solver", "문제 해결사"]'></span>
+                        <span class="cursor">|</span>
                     </div>
-                `;
-        } else {
-          ending.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; padding: 25px; border-radius: 10px; text-align: center;">
-                        <h3>🚀 영원한 여행자</h3>
-                        <p>당신은 시간 여행을 계속하기로 선택했습니다. 이제 당신은 시간의 수호자가 되어 역사를 보호하고 미래를 안내하는 역할을 맡게 됩니다.</p>
-                        <p style="margin-top: 15px; font-style: italic;">"시간은 끝없는 모험이고, 당신은 그 모험의 주인공입니다."</p>
+                    <p class="hero-description">
+                        사용자 경험을 중시하며, 확장 가능하고 유지보수가 용이한 
+                        소프트웨어를 개발하는 것을 목표로 합니다.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">연락하기</a>
+                        <a href="#projects" class="btn btn-secondary">프로젝트 보기</a>
                     </div>
-                `;
-        }
-      }
+                </div>
+                <div class="hero-image">
+                    <div class="profile-image">
+                        <div class="image-placeholder">
+                            <span>👨‍💻</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      // 페이지 로드 시 애니메이션 효과
-      window.addEventListener("load", function () {
-        const chapters = document.querySelectorAll(".chapter");
-        chapters.forEach((chapter, index) => {
-          setTimeout(() => {
-            chapter.style.opacity = "0";
-            chapter.style.transform = "translateY(30px)";
-            chapter.style.transition = "all 0.6s ease";
+        <!-- 소개 섹션 -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            5년간의 풀스택 개발 경험을 바탕으로, 웹 애플리케이션부터 
+                            모바일 앱까지 다양한 프로젝트를 성공적으로 완료했습니다.
+                        </p>
+                        <p>
+                            최신 기술 트렌드를 빠르게 학습하고 적용하며, 
+                            팀워크를 중시하는 개발자입니다. 코드 품질과 
+                            사용자 경험을 동시에 고려한 개발을 추구합니다.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <h3>5+</h3>
+                                <p>년 경력</p>
+                            </div>
+                            <div class="stat">
+                                <h3>50+</h3>
+                                <p>완료 프로젝트</p>
+                            </div>
+                            <div class="stat">
+                                <h3>100%</h3>
+                                <p>고객 만족도</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            setTimeout(() => {
-              chapter.style.opacity = "1";
-              chapter.style.transform = "translateY(0)";
-            }, 100);
-          }, index * 200);
-        });
-      });
-    </script>
-  </body>
+        <!-- 기술 섹션 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Vue.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">TypeScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Java</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Go</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">PostgreSQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">MongoDB</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Redis</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>DevOps & Tools</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">AWS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Git</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 경력 섹션 -->
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>시니어 소프트웨어 엔지니어</h3>
+                            <h4>테크스타트업</h4>
+                            <span class="timeline-date">2022 - 현재</span>
+                            <p>
+                                마이크로서비스 아키텍처 설계 및 구현을 담당했습니다. 
+                                팀 리딩과 멘토링을 통해 개발팀의 생산성을 향상시켰습니다.
+                            </p>
+                            <ul>
+                                <li>React와 Node.js를 활용한 풀스택 웹 애플리케이션 개발</li>
+                                <li>AWS 클라우드 인프라 설계 및 구축</li>
+                                <li>CI/CD 파이프라인 구축으로 배포 자동화</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>소프트웨어 엔지니어</h3>
+                            <h4>IT컨설팅</h4>
+                            <span class="timeline-date">2020 - 2022</span>
+                            <p>
+                                다양한 클라이언트의 웹 애플리케이션 개발 프로젝트를 
+                                성공적으로 완료했습니다.
+                            </p>
+                            <ul>
+                                <li>Vue.js와 Spring Boot를 활용한 엔터프라이즈 웹 애플리케이션 개발</li>
+                                <li>데이터베이스 설계 및 최적화</li>
+                                <li>API 설계 및 문서화</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>주니어 개발자</h3>
+                            <h4>웹에이전시</h4>
+                            <span class="timeline-date">2019 - 2020</span>
+                            <p>
+                                웹사이트 및 모바일 앱 개발을 통해 실무 경험을 쌓았습니다.
+                            </p>
+                            <ul>
+                                <li>HTML, CSS, JavaScript를 활용한 반응형 웹사이트 개발</li>
+                                <li>React Native를 활용한 크로스 플랫폼 모바일 앱 개발</li>
+                                <li>Git을 활용한 버전 관리 및 협업</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 프로젝트 섹션 -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="image-placeholder">🛒</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>E-Commerce Platform</h3>
+                            <p>
+                                React, Node.js, PostgreSQL을 활용한 풀스택 전자상거래 플랫폼입니다. 
+                                결제 시스템, 재고 관리, 주문 추적 기능을 포함합니다.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Stripe</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline">Live Demo</a>
+                                <a href="#" class="btn btn-outline">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="image-placeholder">📱</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Task Management App</h3>
+                            <p>
+                                Vue.js와 Express.js를 활용한 협업 도구입니다. 
+                                실시간 업데이트, 파일 공유, 팀 채팅 기능을 제공합니다.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline">Live Demo</a>
+                                <a href="#" class="btn btn-outline">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="image-placeholder">📊</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Data Analytics Dashboard</h3>
+                            <p>
+                                Python과 D3.js를 활용한 데이터 시각화 대시보드입니다. 
+                                실시간 데이터 처리 및 인터랙티브 차트를 제공합니다.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">Redis</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-outline">Live Demo</a>
+                                <a href="#" class="btn btn-outline">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 섹션 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>연락해주세요!</h3>
+                        <p>
+                            새로운 기회나 협업에 대해 이야기하고 싶으시다면 
+                            언제든지 연락주세요.
+                        </p>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>kim.developer@email.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+82 10-1234-5678</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>서울, 대한민국</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link">GitHub</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                            <a href="#" class="social-link">Twitter</a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="이름" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="이메일" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="제목" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="메시지" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">메시지 보내기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 김개발. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
+
